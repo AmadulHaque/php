@@ -6,7 +6,7 @@
     # private - the property or method can ONLY be accessed within the class
 
 
-#=============== construct 
+#=============== Constants 
 // class  Student
 // {
 // 	const ROLL = 25;
