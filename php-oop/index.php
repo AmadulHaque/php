@@ -111,3 +111,24 @@
 
 // $obj  = new Somthing();
 // echo $obj->xyz(20,3);
+
+#======================= PHP OOP - Abstract Classes  - Abstract classes and methods are when the parent class has a named method, but need its child class(es) to fill out the tasks.    (Abstract  Classes এবং পদ্ধতিগুলি হল যখন প্যারেন্ট Classes একটি নামকরণ পদ্ধতি থাকে, তবে কাজগুলি পূরণ করতে এর Child Classes (গুলি) প্রয়োজন৷)
+
+// abstract class Student
+// {
+//     public $name;
+//     public function __construct($name) {
+//     $this->name = $name;
+//     }
+//     abstract public function result();
+// }
+// class Mark extends Student
+// {
+//     public  function result(){
+//         return "Your Name : " . $this->name;
+//     }
+// }
+// $mark  = new Mark("karim");
+// echo $mark->result();
+// $markh  = new Mark("halim");
+// echo $markh->result();
