@@ -1,0 +1,12 @@
+{
+    "Public Method":{
+        "prefix":"pfn",
+        "body":[
+            "public function $1()",
+            "{",
+            "",
+            "}"
+        ],
+        "description":"New public method."
+    }
+}
