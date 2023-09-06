@@ -1,11 +1,23 @@
 <?php
-    include_once 'admin_page/Layout/Header.php';
+      include_once 'admin_page/Layout/Header.php';
+
+      $username = '';
+      $email = '';
+      $password = '';
+      $con_password = '';
+
+
 
 
       if(!empty($_POST))
       {
         //validate
         $errors = [];
+
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $retype_password = $_POST['retype_password'];
 
         if(empty($_POST['username']))
         {
@@ -69,6 +81,10 @@
   ?>
 
 
+
+
+
+
   <body>
     <div class="app-container app-theme-white body-tabs-shadow">
       <div class="app-container">
@@ -78,7 +94,7 @@
               <div class="app-logo-inverse mx-auto mb-3"></div>
               <div class="modal-dialog w-100">
                 <div class="modal-content">
-                  <form class="" method="post">
+                  <form  method="post">
                   <div class="modal-body">
                     <h5 class="modal-title">
                       <h4 class="mt-2">
@@ -96,19 +112,20 @@
                         <?php if(!empty($errors['username'])):?>
                           <div class="text-danger"><?=$errors['username']?></div>
                         <?php endif;?>
-                        <div class="position-relative form-group"><input name="username" id="exampleEmail"    placeholder="username here..." type="text" class="form-control"></div>
+                        <div class="position-relative form-group"><input  name="username" id="exampleEmail" value="<?=  $username; ?>"  placeholder="username here..." type="text" class="form-control"></div>
                       </div>
                       <div class="col-md-12">
                         <?php if(!empty($errors['email'])):?>
                           <div class="text-danger"><?=$errors['email']?></div>
                         <?php endif;?>
-                        <div class="position-relative form-group"><input name="email" id="exampleEmail"   placeholder="Email here..." type="email" class="form-control"></div>
+                      <?=$_POST['email']?>
+                        <div class="position-relative form-group"><input name="email" id="exampleEmail"    value=""  placeholder="Email here..." type="email" class="form-control"></div>
                       </div>
                       <div class="col-md-12">
                         <?php if(!empty($errors['password'])):?>
                           <div class="text-danger"><?=$errors['password']?></div>
                         <?php endif;?>
-                        <div class="position-relative form-group"><input name="password" id="examplePassword"   placeholder="Password here..." type="password" class="form-control"></div>
+                        <div class="position-relative form-group"><input name="password" id="examplePassword" value="<?= $password?>"  placeholder="Password here..." type="password" class="form-control"></div>
                       </div>
                       <div class="col-md-12">
                         <?php if(!empty($errors['retype_password'])):?>
