@@ -1,23 +1,10 @@
 <?php
       include_once 'admin_page/Layout/Header.php';
 
-      $username = '';
-      $email = '';
-      $password = '';
-      $con_password = '';
-
-
-
-
       if(!empty($_POST))
       {
         //validate
         $errors = [];
-
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-        $retype_password = $_POST['retype_password'];
 
         if(empty($_POST['username']))
         {
@@ -56,12 +43,6 @@
         {
           $errors['password'] = "Passwords do not match";
         }
-
-        if(empty($_POST['terms']))
-        {
-          $errors['terms'] = "Please accept the terms";
-        }
-
         if(empty($errors))
         {
           //save to database
@@ -73,10 +54,9 @@
 
           $query = "insert into users (username,email,password,role) values (:username,:email,:password,:role)";
           query($query, $data);
-
           redirect('login');
-
         }
+
       }
   ?>
 
@@ -91,7 +71,6 @@
         <div class="h-100 bg-premium-dark">
           <div class="d-flex h-100 justify-content-center align-items-center">
             <div class="mx-auto app-login-box col-md-8">
-              <div class="app-logo-inverse mx-auto mb-3"></div>
               <div class="modal-dialog w-100">
                 <div class="modal-content">
                   <form  method="post">
@@ -112,26 +91,25 @@
                         <?php if(!empty($errors['username'])):?>
                           <div class="text-danger"><?=$errors['username']?></div>
                         <?php endif;?>
-                        <div class="position-relative form-group"><input  name="username" id="exampleEmail" value="<?=  $username; ?>"  placeholder="username here..." type="text" class="form-control"></div>
+                        <div class="position-relative form-group"><input  name="username" id="exampleEmail" value="<?=  old_value('username') ?>"  placeholder="username here..." type="text" class="form-control"></div>
                       </div>
                       <div class="col-md-12">
                         <?php if(!empty($errors['email'])):?>
                           <div class="text-danger"><?=$errors['email']?></div>
                         <?php endif;?>
-                      <?=$_POST['email']?>
-                        <div class="position-relative form-group"><input name="email" id="exampleEmail"    value=""  placeholder="Email here..." type="email" class="form-control"></div>
+                        <div class="position-relative form-group"><input name="email"   value="<?= old_value('email')  ?>"  placeholder="Email here..." type="email" class="form-control"></div>
                       </div>
                       <div class="col-md-12">
                         <?php if(!empty($errors['password'])):?>
                           <div class="text-danger"><?=$errors['password']?></div>
                         <?php endif;?>
-                        <div class="position-relative form-group"><input name="password" id="examplePassword" value="<?= $password?>"  placeholder="Password here..." type="password" class="form-control"></div>
+                        <div class="position-relative form-group"><input name="password" id="examplePassword" value="<?= old_value('password') ?>"  placeholder="Password here..." type="password" class="form-control"></div>
                       </div>
                       <div class="col-md-12">
                         <?php if(!empty($errors['retype_password'])):?>
                           <div class="text-danger"><?=$errors['retype_password']?></div>
                         <?php endif;?>
-                        <div class="position-relative form-group"><input name="retype_password" id="examplePasswordRep"   placeholder="Repeat Password here..." type="password" class="form-control"></div>
+                        <div class="position-relative form-group"><input name="retype_password" id="examplePasswordRep" value="<?= old_value('retype_password') ?>"  placeholder="Repeat Password here..." type="password" class="form-control"></div>
                       </div>
                     </div>
                     <div class="mt-3 position-relative form-check"><input name="check" id="exampleCheck" type="checkbox" class="form-check-input"><label for="exampleCheck" class="form-check-label">Accept our <a href="javascript:void(0);">Terms and Conditions</a>.</label></div>
@@ -143,7 +121,6 @@
                   </form>
                 </div>
               </div>
-              <div class="text-center text-white opacity-8 mt-3">Copyright © KeroUI 2019</div>
             </div>
           </div>
         </div>
