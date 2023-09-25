@@ -1,0 +1,15 @@
+[
+    {
+        "customer_email": "amadul@gmail.com",
+        "type": "deposit",
+        "amount": 500,
+        "timestamp": "2023-09-25 08:06:27"
+    },
+    {
+        "sender_email": "amadul@gmail.com",
+        "recipient_email": "karim@gmail.com",
+        "type": "transfer",
+        "amount": 250,
+        "timestamp": "2023-09-25 08:07:51"
+    }
+]

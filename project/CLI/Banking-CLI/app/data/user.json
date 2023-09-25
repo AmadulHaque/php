@@ -1,0 +1,30 @@
+[
+    {
+        "name": "amadul",
+        "email": "amadul@gmail.com",
+        "role": "1",
+        "password": "$2y$10$FODPntpgTzLTd2Rx.YyKquJ6pThhrZ6rsumAzMA3xNilOS7k4DKOu",
+        "balance": 300
+    },
+    {
+        "name": "karim",
+        "email": "karim@gmail.com",
+        "role": "2",
+        "password": "$2y$10$FODPntpgTzLTd2Rx.YyKquJ6pThhrZ6rsumAzMA3xNilOS7k4DKOu",
+        "balance": 200
+    },
+    {
+        "name": "halim",
+        "email": "halim@gmail.com",
+        "role": "2",
+        "password": "$2y$10$FODPntpgTzLTd2Rx.YyKquJ6pThhrZ6rsumAzMA3xNilOS7k4DKOu",
+        "balance": 0
+    },
+    {
+        "name": "admin",
+        "email": "admin@gmail.com",
+        "role": "1",
+        "password": "$2y$10$\/FoekSv0U4PHOWYgWNkpousdWcKs4LwBOLQgDwjLDKGcqdo3hIzXC",
+        "balance": 0
+    }
+]
