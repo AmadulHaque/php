@@ -23,7 +23,7 @@
                 </dt>
                 <dd
                   class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-gray-900">
-                  ৳ 10,115,091.00
+                  ৳ <?php echo $amount; ?>
                 </dd>
               </div>
             </dl>
@@ -36,15 +36,14 @@
                   Deposit Money To Your Account
                 </h3>
                 <div class="mt-4 text-sm text-gray-500">
-                  <form
-                    action="/customer/deposit"
-                    method="POST">
+                  <form action="/customer/transaction"method="POST">
                     <!-- Input Field -->
                     <div class="relative mt-2 rounded-md">
                       <div
                         class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-0">
                         <span class="text-gray-400 sm:text-4xl">৳</span>
                       </div>
+                      <input type="hidden" name="type" value="1"/>
                       <input
                         type="number"
                         name="amount"

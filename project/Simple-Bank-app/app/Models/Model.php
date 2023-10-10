@@ -79,26 +79,38 @@ class Model extends Database {
 
 
 
-    public function update($table, $id, $fields) {
-        $set = '';
+    public function updateData($table, $fields = array(), $id = '') {
+        $keys = array_keys($fields);
+        $values = null;
         $x = 1;
+        $setClauses = array();
 
-        foreach($fields as $name => $value) {
-            $set .= "{$name} = ?";
-            if($x < count ($fields)) {
-                $set .= ', ';
+        foreach ($fields as $field => $value) {
+            $values .= '?';
+            if ($x < count($fields)) {
+                $values .= ', ';
             }
             $x++;
+            $setClauses[] = "`{$field}` = ?";
         }
 
-        $sql = "UPDATE {$table} SET {$set} WHERE id = {$id}";
+        $sql = "UPDATE {$table} SET " . implode(', ', $setClauses);
 
-        if(!$this->query($sql, $fields)->error()) {
+        if (!empty($whereCondition)) {
+            $sql .= " WHERE id={$id}";
+        }
+
+        $values = array_values($fields);
+        
+        if (!$this->query($sql, $values)->error()) {
             return true;
         }
-
         return false;
     }
+
+
+
+  
 
 
     public function findByEmail($table, $email)
@@ -114,19 +126,48 @@ class Model extends Database {
         return $user;
     }
 
-    public function findByData($table,$id)
+    
+    
+    public function findByData($table, $user_id)
     {
-        $stmt = $this->db->prepare("SELECT * FROM {$table}"); 
-        // $stmt->bindParam(':user_id', $id);
+        $stmt = $this->db->prepare("SELECT * FROM transactions WHERE user_id = :user_id");
+
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+
         $stmt->execute();
-        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
         if (!$data) {
-            return false;
+            return [];
         }
         return $data;
     }
+    
+    public function sumData($table, $column, $user_id)
+    {
+        $stmt = $this->db->prepare("SELECT SUM({$column}) as total FROM {$table} WHERE user_id = :user_id");
 
+        $stmt->bindParam(':user_id', $user_id, PDO::PARAM_INT);
+
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$result || !isset($result['total'])) {
+            return 0;
+        }
+
+        return (float) $result['total'];
+    }
+
+    public function allData($table)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM {$table};");
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 
 
     public function results() {

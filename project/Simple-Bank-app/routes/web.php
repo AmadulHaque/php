@@ -4,6 +4,7 @@ require_once 'Router.php';
 use App\Controllers\Auth\AuthController;
 use App\Controllers\Home\IndexController;
 use App\Controllers\Customer\CustomerController;
+use App\Controllers\Admin\AdminController;
 
 
 
@@ -23,6 +24,11 @@ Router::get('/customer/withdraw', [CustomerController::class,"withdraw"]);
 Router::get('/customer/transfer', [CustomerController::class,"Transfer"]);
 
 //  post
-Router::post('/customer/deposit', [CustomerController::class,"depositStore"]);
-Router::post('/customer/withdraw', [CustomerController::class,"withdrawStore"]);
-Router::post('/customer/transfer', [CustomerController::class,"TransferStore"]);
+Router::post('/customer/transaction', [CustomerController::class,"TransactionStore"]);
+
+
+// admin
+Router::get('/admin/dashboard', [AdminController::class,"Index"]);
+Router::get('/admin/transactions', [AdminController::class,"CustomerTransactions"]);
+Router::get('/admin/add/customer', [AdminController::class,"CustomerAdd"]);
+Router::post('/admin/store/customer', [AdminController::class,"CustomerStore"]);

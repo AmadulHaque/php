@@ -20,7 +20,7 @@
                 </dt>
                 <dd
                   class="w-full flex-none text-3xl font-medium leading-10 tracking-tight text-gray-900">
-                  $10,115,091.00
+                  ৳ <?php echo $amount; ?>
                 </dd>
               </div>
             </dl>
@@ -33,9 +33,8 @@
                   Withdaw Money From Your Account
                 </h3>
                 <div class="mt-4 text-sm text-gray-500">
-                  <form
-                    action="#"
-                    method="POST">
+                  <form action="/customer/transaction"method="POST">
+                  <input type="hidden" name="type" value="2"/>
                     <!-- Input Field -->
                     <div class="relative mt-2 rounded-md">
                       <div

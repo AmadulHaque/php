@@ -15,6 +15,19 @@ class Transaction extends Model
     {
       return $this->findByData('transactions',$id);
     }
+
+    public function all()
+    {
+      return $this->allData('transactions');
+    }
+
+
+    public function sum($column, $user_id)
+    {
+      return $this->sumData('transactions',$column,$user_id);
+    }
+
+    
     
   
 

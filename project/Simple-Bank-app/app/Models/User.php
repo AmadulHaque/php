@@ -11,12 +11,23 @@ class User extends Model
     }
     
   
+    public function all()
+    {
+      return $this->allData('users');
+    }
+
+      
+    public function update($data,$id)
+    {
+      return $this->updateData('users', $data, $id);
+    }
+
 
     public function login($email)
     {
        return $this->findByEmail('users', $email);
     }
-
+    
     
     
 }

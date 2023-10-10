@@ -41,7 +41,7 @@ class AuthController extends Controller
                 if(Hash::check($_POST['password'], $user['password'])) {
                     Session::put('token', $user);
                     if ($user['role']==1) {
-                        // return admin panel
+                        redirect('/admin/dashboard');
                     }else{
                         return redirect('/customer/dashboard',['message'=>"login successful."]);
                     }
