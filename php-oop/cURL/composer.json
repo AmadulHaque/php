@@ -1,0 +1,6 @@
+{
+    "require": {
+        "sunra/php-simple-html-dom-parser": "^1.5",
+        "voku/simple_html_dom": "^4.8"
+    }
+}
